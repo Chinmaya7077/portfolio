@@ -1,0 +1,90 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+{% block title %}About - {{ name }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header-left">
+      <h1>About Me</h1>
+    </div>
+    <div class="about-grid">
+      <div class="about-content reveal">
+        {% for para in about.splitlines %}
+          {% if para|length > 0 %}<p>{{ para }}</p>{% endif %}
+        {% endfor %}
+
+        <div style="margin-top:32px;">
+          <a href="{% static 'portfolio/Chinmaya_Ranjan_Sahu_Resume.pdf' %}" download class="btn-download">
+            &#8681; Download Resume
+          </a>
+        </div>
+
+        <div style="margin-top:48px;">
+          <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:24px;">Experience</h2>
+          <div class="exp-timeline">
+            <span class="exp-timeline-dot"></span>
+            <div class="exp-card">
+              <p class="exp-role">{{ experience.role }}</p>
+              <p class="exp-company">{{ experience.company }}</p>
+              <p class="exp-period">{{ experience.location }} &middot; {{ experience.period }}</p>
+              <ul class="exp-bullets">
+                {% for b in experience.bullets %}
+                <li>{{ b }}</li>
+                {% endfor %}
+              </ul>
+            </div>
+          </div>
+        </div>
+
+        <div style="margin-top:48px;">
+          <h2 style="font-size:1.5rem;font-weight:800;margin-bottom:24px;">Education</h2>
+          {% for edu in education %}
+          <div class="edu-item">
+            <p class="edu-degree">{{ edu.degree }}</p>
+            <p class="edu-school">{{ edu.school }}</p>
+            <p class="edu-year">{{ edu.year }}</p>
+          </div>
+          {% endfor %}
+        </div>
+      </div>
+
+      <aside class="about-sidebar reveal">
+        <div class="currently-card">
+          <h4>Currently</h4>
+          <div class="currently-item">
+            <span class="currently-dot learning"></span>
+            <div><span class="currently-label">Learning</span><br>Rust & Systems Programming</div>
+          </div>
+          <div class="currently-item">
+            <span class="currently-dot reading"></span>
+            <div><span class="currently-label">Reading</span><br>Designing Data-Intensive Applications</div>
+          </div>
+          <div class="currently-item">
+            <span class="currently-dot building"></span>
+            <div><span class="currently-label">Building</span><br>Event-driven microservices with Kafka</div>
+          </div>
+          <div class="currently-item">
+            <span class="currently-dot exploring"></span>
+            <div><span class="currently-label">Exploring</span><br>LLM agents & RAG pipelines</div>
+          </div>
+        </div>
+
+        <div class="info-card">
+          <h4>Skills</h4>
+          {% for group in skills %}
+          <div class="skill-group">
+            <p class="skill-group-name">{{ group.name }}</p>
+            <div class="skill-pills">
+              {% for item in group.items %}
+              <span class="skill-pill">{{ item }}</span>
+              {% endfor %}
+            </div>
+          </div>
+          {% endfor %}
+        </div>
+      </aside>
+    </div>
+  </div>
+</section>
+{% endblock %}

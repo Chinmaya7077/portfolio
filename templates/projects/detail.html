@@ -1,0 +1,33 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}{{ project.title }} - Chinmaya Ranjan Sahu{% endblock %}
+
+{% block content %}
+<div class="container">
+  <section class="project-detail">
+    <a href="{% url 'project_list' %}" class="back-link">&larr; All Projects</a>
+    <h1>{{ project.title }}</h1>
+    <p class="project-meta">{{ project.role }}</p>
+
+    <div class="project-body">
+      <p style="font-size:17px;color:var(--text-secondary);line-height:1.8;margin-bottom:32px;">{{ project.description }}</p>
+
+      {% if project.highlight_list %}
+      <h3>Key Highlights</h3>
+      <ul>
+        {% for h in project.highlight_list %}
+        <li>{{ h }}</li>
+        {% endfor %}
+      </ul>
+      {% endif %}
+
+      <h3>Tech Stack</h3>
+      <div class="tech-tags" style="margin-bottom:32px;">
+        {% for t in project.tech_list %}
+        <span class="tech-tag">{{ t }}</span>
+        {% endfor %}
+      </div>
+    </div>
+  </section>
+</div>
+{% endblock %}

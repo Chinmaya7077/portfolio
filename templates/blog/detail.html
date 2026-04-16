@@ -1,0 +1,27 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}{{ post.title }} - Blog{% endblock %}
+
+{% block content %}
+<div class="container">
+  <article class="post-detail">
+    <a href="{% url 'blog_list' %}" class="back-link">&larr; All Posts</a>
+    <h1>{{ post.title }}</h1>
+    <div class="post-meta-bar">
+      <span class="post-meta" style="margin-bottom:0;padding-bottom:0;border-bottom:none;">{{ post.created|date:"F d, Y" }}</span>
+      <span class="post-reading-badge">{{ post.reading_time }} min read</span>
+    </div>
+    <div class="prose">
+      {{ post.content_html|safe }}
+    </div>
+    <div class="share-section">
+      <h4>Share this article</h4>
+      <div class="share-links">
+        <a href="https://twitter.com/intent/tweet?text={{ post.title|urlencode }}&url={{ request.build_absolute_uri }}" target="_blank" class="share-link">Twitter / X</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url={{ request.build_absolute_uri }}" target="_blank" class="share-link">LinkedIn</a>
+        <a href="mailto:?subject={{ post.title|urlencode }}&body=Check out this article: {{ request.build_absolute_uri }}" class="share-link">Email</a>
+      </div>
+    </div>
+  </article>
+</div>
+{% endblock %}

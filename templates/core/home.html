@@ -1,0 +1,145 @@
+{% extends 'base/layout.html' %}
+{% load static %}
+
+{% block title %}{{ name }} - {{ role }}{% endblock %}
+
+{% block content %}
+<!-- Hero: Full Width Gradient -->
+<section class="hero-section">
+  <div class="hero-inner">
+    <div>
+      <p class="hero-greeting"><span id="hero-typing" data-text="Hi, I'm"></span><span class="hero-typing-cursor"></span></p>
+      <h1>{{ name }}</h1>
+      <p class="hero-tagline">{{ tagline }}</p>
+      <div class="hero-cta">
+        <a href="{% url 'project_list' %}" class="btn btn-white">View Projects</a>
+        <a href="{% static 'portfolio/Chinmaya_Ranjan_Sahu_Resume.pdf' %}" download class="btn btn-ghost">Download Resume</a>
+      </div>
+    </div>
+    <div class="hero-right-col">
+      <div class="hero-code-card">
+        <div class="hero-code-header">
+          <span class="hero-code-dot"></span>
+          <span class="hero-code-dot"></span>
+          <span class="hero-code-dot"></span>
+          <span class="hero-code-filename">developer.py</span>
+        </div>
+        <div class="hero-code-body">
+          <span class="kw">class</span> <span class="cls">Developer</span>:<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">__init__</span>(<span class="var">self</span>):<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="var">self</span>.name = <span class="str">"Chinmaya"</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="var">self</span>.role = <span class="str">"Backend Dev"</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="var">self</span>.stack = [<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"Django"</span>, <span class="str">"FastAPI"</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="str">"PostgreSQL"</span>, <span class="str">"Redis"</span>,<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;]<br><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">def</span> <span class="fn">build</span>(<span class="var">self</span>, <span class="var">idea</span>):<br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="cm"># ship it</span><br>
+          &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="kw">return</span> <span class="var">Production</span>(<span class="var">idea</span>)
+        </div>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-card">
+          <span class="stat-number">3+</span>
+          <span class="stat-label">Years Exp</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">30+</span>
+          <span class="stat-label">REST APIs</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">3</span>
+          <span class="stat-label">Prod Apps</span>
+        </div>
+        <div class="stat-card">
+          <span class="stat-number">85%+</span>
+          <span class="stat-label">Coverage</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Section Divider -->
+<div class="section-divider"><div class="section-divider-line"></div></div>
+
+<!-- Projects Section -->
+{% if recent_projects %}
+<section class="section reveal">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Projects</h2>
+      <p>Production systems I've designed, built, and shipped.</p>
+    </div>
+    <div class="project-grid stagger-children">
+      {% for p in recent_projects %}
+      <a href="{% url 'project_detail' p.slug %}" class="project-card">
+        {% if forloop.first %}<span class="featured-badge">Featured</span>{% endif %}
+        <h3>{{ p.title }}</h3>
+        <p class="subtitle">{{ p.subtitle }}</p>
+        <p class="desc">{{ p.description|truncatewords:25 }}</p>
+        <div class="tech-tags">
+          {% for t in p.tech_list %}
+          <span class="tech-tag">{{ t }}</span>
+          {% endfor %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Section Divider -->
+<div class="section-divider"><div class="section-divider-line"></div></div>
+
+<!-- Blog Section -->
+{% if recent_posts %}
+<section class="section section-alt reveal">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Latest Writing</h2>
+      <p>Thoughts on backend development, system design, and tools.</p>
+    </div>
+    <div class="post-grid stagger-children">
+      {% for post in recent_posts %}
+      <a href="{% url 'blog_detail' post.slug %}" class="post-card">
+        <h3>{{ post.title }}</h3>
+        <p class="post-meta">{{ post.created|date:"M d, Y" }} <span class="reading-time-badge">{{ post.reading_time }} min</span></p>
+        {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt }}</p>{% endif %}
+      </a>
+      {% endfor %}
+    </div>
+  </div>
+</section>
+{% endif %}
+
+<!-- Section Divider -->
+<div class="section-divider"><div class="section-divider-line"></div></div>
+
+<!-- Experience Preview -->
+<section class="section reveal">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Experience</h2>
+      <p>Where I've worked and what I've built.</p>
+    </div>
+    <div class="exp-timeline">
+      <span class="exp-timeline-dot"></span>
+      <div class="exp-card">
+        <p class="exp-role">{{ experience.role }}</p>
+        <p class="exp-company">{{ experience.company }}</p>
+        <p class="exp-period">{{ experience.location }} &middot; {{ experience.period }}</p>
+        <ul class="exp-bullets">
+          {% for b in experience.bullets|slice:":4" %}
+          <li>{{ b }}</li>
+          {% endfor %}
+        </ul>
+      </div>
+    </div>
+    <div style="text-align:center;margin-top:24px;">
+      <a href="{% url 'about' %}" class="btn btn-secondary">More about me</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

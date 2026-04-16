@@ -1,0 +1,33 @@
+{% extends 'base/layout.html' %}
+{% block title %}Contact - {{ name }}{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header" style="margin-bottom:56px;">
+      <h2 class="contact-heading">Let's <span class="contact-heading-accent">Work Together</span></h2>
+      <p style="margin-top:12px;">I'm currently open to new opportunities. Feel free to reach out.</p>
+    </div>
+    <div class="contact-grid stagger-children reveal">
+      <a href="mailto:{{ email }}" class="contact-card">
+        <span class="contact-icon">&#9993;</span>
+        <p class="contact-label">Email</p>
+        <p class="contact-value">{{ email }}</p>
+      </a>
+      <a href="tel:{{ phone }}" class="contact-card">
+        <span class="contact-icon">&#9742;</span>
+        <p class="contact-label">Phone</p>
+        <p class="contact-value">{{ phone }}</p>
+      </a>
+      <a href="{{ linkedin_url }}" target="_blank" class="contact-card">
+        <span class="contact-icon">&#128279;</span>
+        <p class="contact-label">LinkedIn</p>
+        <p class="contact-value">linkedin.com/in/chinmaya</p>
+      </a>
+    </div>
+    <div style="text-align:center;margin-top:40px;" class="reveal">
+      <a href="mailto:{{ email }}" class="btn btn-primary" style="font-size:16px;padding:16px 40px;">Say Hello</a>
+    </div>
+  </div>
+</section>
+{% endblock %}

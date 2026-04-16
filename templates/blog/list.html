@@ -1,0 +1,32 @@
+{% extends 'base/layout.html' %}
+
+{% block title %}Blog - Chinmaya Ranjan Sahu{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Blog</h2>
+      <p>Thoughts on backend development, system design, and tools I use.</p>
+    </div>
+    {% if posts %}
+    <div class="post-grid stagger-children reveal">
+      {% for post in posts %}
+      <a href="{% url 'blog_detail' post.slug %}" class="post-card">
+        <div class="post-card-tag">Article</div>
+        <h3>{{ post.title }}</h3>
+        <p class="post-meta">{{ post.created|date:"M d, Y" }} <span class="reading-time-badge">{{ post.reading_time }} min</span></p>
+        {% if post.excerpt %}<p class="post-excerpt">{{ post.excerpt }}</p>{% endif %}
+        <span class="read-more">Read article &rarr;</span>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty">
+      <span class="empty-icon">&#9997;</span>
+      <p>Blog posts coming soon. Stay tuned.</p>
+    </div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}

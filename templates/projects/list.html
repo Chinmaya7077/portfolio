@@ -1,0 +1,32 @@
+{% extends 'base/layout.html' %}
+{% block title %}Projects - Chinmaya Ranjan Sahu{% endblock %}
+
+{% block content %}
+<section class="section">
+  <div class="section-inner">
+    <div class="section-header">
+      <h2>Projects</h2>
+      <p>Production systems I've designed, built, and shipped.</p>
+    </div>
+    {% if projects %}
+    <div class="project-grid reveal">
+      {% for p in projects %}
+      <a href="{% url 'project_detail' p.slug %}" class="project-card">
+        <span class="emoji">{% if forloop.counter == 1 %}&#9889;{% elif forloop.counter == 2 %}&#129302;{% else %}&#128202;{% endif %}</span>
+        <h3>{{ p.title }}</h3>
+        <p class="subtitle">{{ p.subtitle }}</p>
+        <p class="desc">{{ p.description|truncatewords:30 }}</p>
+        <div class="tech-tags">
+          {% for t in p.tech_list %}
+          <span class="tech-tag">{{ t }}</span>
+          {% endfor %}
+        </div>
+      </a>
+      {% endfor %}
+    </div>
+    {% else %}
+    <div class="empty"><span class="empty-icon">&#128187;</span><p>Projects coming soon.</p></div>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
