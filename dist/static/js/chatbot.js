@@ -1,10 +1,8 @@
 /**
  * Portfolio AI Chatbot Widget
- * Floating chat button with streaming responses.
- * Connects to the FastAPI backend via SSE.
+ * Floating chat button with streaming responses via SSE.
  */
 (function () {
-  // ---- CONFIG ----
   const API_URL = window.CHATBOT_API_URL || 'https://chinmaya7077-portfolio-chatbot.hf.space';
   let sessionId = localStorage.getItem('chatbot_session') || crypto.randomUUID();
   localStorage.setItem('chatbot_session', sessionId);
@@ -43,12 +41,11 @@
   `;
   document.body.appendChild(widget);
 
-  // ---- ELEMENTS ----
   const toggle = document.getElementById('chatbot-toggle');
   const panel = document.getElementById('chatbot-panel');
   const closeBtn = document.getElementById('chatbot-close');
-  const messages = document.getElementById('chatbot-messages');
-  const suggestions = document.getElementById('chatbot-suggestions');
+  const messagesEl = document.getElementById('chatbot-messages');
+  const suggestionsEl = document.getElementById('chatbot-suggestions');
   const input = document.getElementById('chatbot-input');
   const sendBtn = document.getElementById('chatbot-send');
 
@@ -57,14 +54,14 @@
 
   // ---- TOGGLE ----
   toggle.addEventListener('click', () => {
-    isOpen = !isOpen;
-    panel.classList.toggle('chatbot-hidden', !isOpen);
-    toggle.classList.toggle('chatbot-active', isOpen);
-    if (isOpen && messages.children.length === 0) {
+    isOpen = true;
+    panel.classList.remove('chatbot-hidden');
+    toggle.classList.add('chatbot-active');
+    if (messagesEl.children.length === 0) {
       showWelcome();
       loadSuggestions();
     }
-    if (isOpen) input.focus();
+    input.focus();
   });
 
   closeBtn.addEventListener('click', () => {
@@ -73,73 +70,66 @@
     toggle.classList.remove('chatbot-active');
   });
 
-  // ---- WELCOME MESSAGE ----
   function showWelcome() {
     addMessage('assistant', "Hi! I'm Chinmaya's AI assistant. Ask me about his projects, skills, experience, or tech stack.");
   }
 
   // ---- SUGGESTIONS ----
   async function loadSuggestions() {
-    const defaultSuggestions = [
+    const defaults = [
       "What projects has Chinmaya built?",
       "What is his tech stack?",
       "Tell me about EZWallet",
       "Show GitHub repos",
     ];
-
     try {
-      const res = await fetch(`${API_URL}/chat/suggestions`);
+      const res = await fetch(API_URL + '/chat/suggestions');
       if (res.ok) {
         const data = await res.json();
         renderSuggestions(data.suggestions.slice(0, 4));
         return;
       }
-    } catch (e) { /* use defaults */ }
-
-    renderSuggestions(defaultSuggestions);
+    } catch (e) {}
+    renderSuggestions(defaults);
   }
 
   function renderSuggestions(items) {
-    suggestions.innerHTML = '';
+    suggestionsEl.innerHTML = '';
     items.forEach(text => {
       const btn = document.createElement('button');
       btn.className = 'chatbot-suggestion';
       btn.textContent = text;
       btn.addEventListener('click', () => {
         sendMessage(text);
-        suggestions.innerHTML = '';
+        suggestionsEl.innerHTML = '';
       });
-      suggestions.appendChild(btn);
+      suggestionsEl.appendChild(btn);
     });
   }
 
   // ---- MESSAGES ----
   function addMessage(role, content) {
     const div = document.createElement('div');
-    div.className = `chatbot-msg chatbot-msg-${role}`;
-
+    div.className = 'chatbot-msg chatbot-msg-' + role;
     const bubble = document.createElement('div');
     bubble.className = 'chatbot-bubble';
     bubble.textContent = content;
-
     div.appendChild(bubble);
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
     return bubble;
   }
 
-  function addLoadingMessage() {
+  function addLoading() {
     const div = document.createElement('div');
     div.className = 'chatbot-msg chatbot-msg-assistant';
     div.id = 'chatbot-loading';
-
     const bubble = document.createElement('div');
     bubble.className = 'chatbot-bubble chatbot-typing';
     bubble.innerHTML = '<span></span><span></span><span></span>';
-
     div.appendChild(bubble);
-    messages.appendChild(div);
-    messages.scrollTop = messages.scrollHeight;
+    messagesEl.appendChild(div);
+    messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
   function removeLoading() {
@@ -155,16 +145,17 @@
     sendBtn.disabled = true;
 
     addMessage('user', text);
-    addLoadingMessage();
+    addLoading();
 
     try {
-      const res = await fetch(`${API_URL}/chat`, {
+      // Use non-streaming for reliability
+      const res = await fetch(API_URL + '/chat', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
           query: text,
           session_id: sessionId,
-          stream: true,
+          stream: false,
         }),
       });
 
@@ -177,39 +168,9 @@
         return;
       }
 
-      // Stream SSE response
-      const bubble = addMessage('assistant', '');
-      const reader = res.body.getReader();
-      const decoder = new TextDecoder();
-      let fullText = '';
-      let buffer = '';
-
-      while (true) {
-        const { done, value } = await reader.read();
-        if (done) break;
-
-        buffer += decoder.decode(value, { stream: true });
-        const lines = buffer.split('\n');
-        buffer = lines.pop() || '';
-
-        for (const line of lines) {
-          if (line.startsWith('data:')) {
-            const data = line.slice(5).trim();
-            if (data) {
-              fullText += data;
-              bubble.textContent = fullText;
-              messages.scrollTop = messages.scrollHeight;
-            }
-          }
-          if (line.startsWith('event: done')) {
-            // Stream complete
-          }
-        }
-      }
-
-      if (!fullText) {
-        bubble.textContent = "I couldn't generate a response. Please try again.";
-      }
+      const data = await res.json();
+      addMessage('assistant', data.response || "I couldn't generate a response.");
+      if (data.session_id) sessionId = data.session_id;
 
     } catch (e) {
       removeLoading();
@@ -221,10 +182,9 @@
     input.focus();
   }
 
-  // ---- INPUT HANDLERS ----
+  // ---- INPUT ----
   input.addEventListener('keydown', (e) => {
     if (e.key === 'Enter') sendMessage(input.value);
   });
-
   sendBtn.addEventListener('click', () => sendMessage(input.value));
 })();

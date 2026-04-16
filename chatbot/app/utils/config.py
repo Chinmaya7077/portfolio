@@ -8,7 +8,7 @@ from functools import lru_cache
 class Settings(BaseSettings):
     # HuggingFace
     huggingface_api_token: str = ""
-    hf_model: str = "mistralai/Mistral-7B-Instruct-v0.3"
+    hf_model: str = "Qwen/Qwen2.5-7B-Instruct"
 
     # ChromaDB
     chroma_persist_dir: str = "./db"
