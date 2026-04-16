@@ -1,0 +1,159 @@
+
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Why I Use ClickHouse for Trade Analytics - Blog</title>
+  <meta name="description" content="Python Backend Developer" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="/static/css/style.css" />
+</head>
+<body>
+
+  <!-- Animated gradient blobs -->
+  <div class="bg-animation">
+    <div class="blob blob-1"></div>
+    <div class="blob blob-2"></div>
+    <div class="blob blob-3"></div>
+    <div class="blob blob-4"></div>
+  </div>
+
+  <!-- Floating sparkle dots -->
+  <div class="particles">
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+    <div class="particle"></div>
+  </div>
+
+  <nav class="navbar">
+    <div class="nav-inner">
+      <div class="nav-brand">
+        <a href="/" class="nav-name">chinmaya.</a>
+        <span class="nav-status"><span class="nav-status-dot"></span>Available</span>
+      </div>
+      <ul class="nav-links" id="nav-links">
+        <li><a href="/projects/" >Projects</a></li>
+        <li><a href="/blog/" class="active">Blog</a></li>
+        <li><a href="/about/" >About</a></li>
+        <li><a href="/contact/" >Contact</a></li>
+        <li><a href="/static/portfolio/Chinmaya_Ranjan_Sahu_Resume.pdf" download class="nav-resume">Resume</a></li>
+      </ul>
+      <div class="nav-actions">
+        <button class="theme-btn" id="theme-btn" aria-label="Toggle theme"></button>
+        <button class="hamburger" id="hamburger" aria-label="Menu">&#9776;</button>
+      </div>
+    </div>
+  </nav>
+
+  <main>
+    
+<div class="container">
+  <article class="post-detail">
+    <a href="/blog/" class="back-link">&larr; All Posts</a>
+    <h1>Why I Use ClickHouse for Trade Analytics</h1>
+    <div class="post-meta-bar">
+      <span class="post-meta" style="margin-bottom:0;padding-bottom:0;border-bottom:none;">April 16, 2026</span>
+      <span class="post-reading-badge">1 min read</span>
+    </div>
+    <div class="prose">
+      <p>After building EZWallet's trading engine, I needed to analyze millions of trades for patterns, P&amp;L, and settlement prices.</p>
+<h2>PostgreSQL Hit a Wall</h2>
+<p>PostgreSQL handled our OLTP workload perfectly — orders, wallets, user state. But when I tried running analytical queries over trade history:</p>
+<div class="codehilite"><pre><span></span><code><span class="k">SELECT</span><span class="w"> </span><span class="n">token</span><span class="p">,</span><span class="w"> </span><span class="k">AVG</span><span class="p">(</span><span class="n">price</span><span class="p">),</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span>
+<span class="k">FROM</span><span class="w"> </span><span class="n">trades</span>
+<span class="k">WHERE</span><span class="w"> </span><span class="k">timestamp</span><span class="w"> </span><span class="o">&gt;</span><span class="w"> </span><span class="n">now</span><span class="p">()</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="nb">interval</span><span class="w"> </span><span class="s1">&#39;24 hours&#39;</span>
+<span class="k">GROUP</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="n">token</span>
+<span class="k">ORDER</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="k">COUNT</span><span class="p">(</span><span class="o">*</span><span class="p">)</span><span class="w"> </span><span class="k">DESC</span><span class="p">;</span>
+</code></pre></div>
+
+<p>This query took <strong>45 seconds</strong> on 10M rows. Unacceptable for a real-time dashboard.</p>
+<h2>Enter ClickHouse</h2>
+<p>ClickHouse is a columnar OLAP database designed for exactly this use case. The same query runs in <strong>0.8 seconds</strong> on the same data.</p>
+<p>Why it's faster:
+- <strong>Columnar storage</strong>: only reads the columns you need
+- <strong>Vectorized execution</strong>: processes data in CPU-cache-friendly batches
+- <strong>Compression</strong>: 10x smaller on disk than PostgreSQL for the same data</p>
+<h2>How I Set It Up</h2>
+<p>I use PostgreSQL for writes (orders, wallets) and replicate trade events to ClickHouse via Kafka:</p>
+<div class="codehilite"><pre><span></span><code><span class="n">FastAPI</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">PostgreSQL</span><span class="w"> </span><span class="p">(</span><span class="n">orders</span><span class="p">)</span>
+<span class="w">       </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">Kafka</span><span class="w"> </span><span class="o">-&gt;</span><span class="w"> </span><span class="n">ClickHouse</span><span class="w"> </span><span class="p">(</span><span class="n">analytics</span><span class="p">)</span>
+</code></pre></div>
+
+<p>This gives me ACID for writes and blazing-fast analytics for reads. Best of both worlds.</p>
+    </div>
+    <div class="share-section">
+      <h4>Share this article</h4>
+      <div class="share-links">
+        <a href="https://twitter.com/intent/tweet?text=Why%20I%20Use%20ClickHouse%20for%20Trade%20Analytics&url=http://testserver/blog/clickhouse-trade-analytics/" target="_blank" class="share-link">Twitter / X</a>
+        <a href="https://www.linkedin.com/sharing/share-offsite/?url=http://testserver/blog/clickhouse-trade-analytics/" target="_blank" class="share-link">LinkedIn</a>
+        <a href="mailto:?subject=Why%20I%20Use%20ClickHouse%20for%20Trade%20Analytics&body=Check out this article: http://testserver/blog/clickhouse-trade-analytics/" class="share-link">Email</a>
+      </div>
+    </div>
+  </article>
+</div>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-cta">
+      <h3>Have a project in mind? <span class="footer-cta-gradient">Let's talk.</span></h3>
+      <p>I'm always open to discussing new projects, ideas, or opportunities to be part of your vision.</p>
+      <a href="/contact/" class="btn">Get In Touch</a>
+    </div>
+
+    <div class="footer-main">
+      <div class="footer-brand">
+        <span class="footer-logo">chinmaya.</span>
+        <p>Python Backend Developer crafting fast, reliable systems. Based in Bangalore, India.</p>
+        <div class="footer-social">
+          <a href="https://linkedin.com/in/chinmaya-984525243" target="_blank" class="footer-social-link" title="LinkedIn">in</a>
+          <a href="mailto:Chinmayaranjansahu262@gmail.com" class="footer-social-link" title="Email">@</a>
+          <a href="/blog/" class="footer-social-link" title="Blog">B</a>
+        </div>
+      </div>
+      <div class="footer-col">
+        <h5>Pages</h5>
+        <ul>
+          <li><a href="/">Home</a></li>
+          <li><a href="/projects/">Projects</a></li>
+          <li><a href="/blog/">Blog</a></li>
+          <li><a href="/about/">About</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Connect</h5>
+        <ul>
+          <li><a href="/contact/">Contact</a></li>
+          <li><a href="https://linkedin.com/in/chinmaya-984525243" target="_blank">LinkedIn</a></li>
+          <li><a href="mailto:Chinmayaranjansahu262@gmail.com">Email</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h5>Resources</h5>
+        <ul>
+          <li><a href="/static/portfolio/Chinmaya_Ranjan_Sahu_Resume.pdf" download>Resume</a></li>
+          <li><a href="/projects/">Case Studies</a></li>
+          <li><a href="/blog/">Articles</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>Designed and built by Chinmaya Ranjan Sahu &middot; 2026</p>
+      <div class="footer-tech">
+        <span class="footer-tech-badge">Django</span>
+        <span class="footer-tech-badge">Python</span>
+        <span class="footer-tech-badge">Vanilla JS</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/static/js/main.9d33aa0e.js"></script>
+<script defer src="/_vercel/insights/script.js"></script>
+<script defer src="/_vercel/speed-insights/script.js"></script>
+</body>
+</html>
