@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
   function isInternalLink(a) {
     if (!a || !a.href) return false;
-    if (a.getAttribute('download')) return false;
+    if (a.hasAttribute('download')) return false;
+    if (a.href.endsWith('.pdf')) return false;
     if (a.target === '_blank') return false;
     if (a.href.startsWith('mailto:') || a.href.startsWith('tel:')) return false;
     try {
@@ -76,9 +77,12 @@ document.addEventListener('DOMContentLoaded', () => {
     navigateTo(window.location.href, false);
   });
 
-  // Intercept all internal link clicks
+  // Intercept all internal link clicks (skip downloads and PDFs)
   document.addEventListener('click', (e) => {
     const a = e.target.closest('a');
+    if (!a) return;
+    // Let the browser handle download links and PDFs natively
+    if (a.hasAttribute('download') || a.href.endsWith('.pdf')) return;
     if (a && isInternalLink(a)) {
       e.preventDefault();
       navigateTo(a.href);
