@@ -1,0 +1,25 @@
+BLOG: Building a RAG Pipeline for WhatsApp
+
+How I used LangChain, GPT-4o, and a Vector Database to build a chatbot that actually gives accurate answers.
+
+THE PROBLEM:
+Most chatbots either hallucinate or give generic responses. I needed one that answers accurately from a specific knowledge base.
+
+THE RAG ARCHITECTURE:
+RAG (Retrieval-Augmented Generation) works in two steps:
+1. Retrieve relevant documents from a Vector Database
+2. Generate an answer using those documents as context
+
+Using LangChain's RetrievalQA chain with GPT-4o as the LLM and a vector store retriever with k=4 results.
+
+WHY VECTOR DATABASES MATTER:
+Traditional keyword search misses semantic meaning. A user asking "how do I reset my password" should match a document titled "Account Recovery Steps" even though the words don't overlap.
+
+Vector databases (I used Qdrant) store document embeddings and find semantically similar content in milliseconds.
+
+RESULTS:
+- 90-95% intent recognition accuracy
+- 60% fewer hallucinations compared to raw GPT-4o
+- 1.2s average response time including retrieval + generation
+
+KEY INSIGHT: Always give the LLM context. A well-retrieved document beats a larger model every time.

@@ -1,0 +1,54 @@
+CHINMAYA RANJAN SAHU
+Python Backend Developer | Bangalore, India
+Email: Chinmayaranjansahu262@gmail.com
+Phone: +91 6366368424
+LinkedIn: linkedin.com/in/chinmaya-984525243
+GitHub: github.com/Chinmaya7077
+
+SUMMARY
+Backend developer specializing in Python, FastAPI, and Django. Experienced in building autonomous trading systems, AI-powered chatbots, and operations management platforms. Skilled in designing scalable architectures with PostgreSQL, Redis, ClickHouse, and message queues.
+
+SKILLS
+- Languages: Python, SQL, JavaScript
+- Backend Frameworks: FastAPI, Django, Django REST Framework
+- AI/ML: LangChain, GPT-4o, RAG pipelines, Vector Databases, sentence-transformers
+- Databases: PostgreSQL, Redis, ClickHouse, ChromaDB, Qdrant
+- Blockchain: Solana, gRPC, PumpFun, PumpSwap
+- DevOps: Docker, GitHub Actions, GitLab CI, Nginx
+- Tools: Celery, Kafka, WebSockets, REST APIs
+
+EXPERIENCE
+
+1. EZWallet - Autonomous Solana Trading System
+   Role: Sole backend developer
+   - Designed and built an autonomous trading system managing Solana token positions on PumpFun and PumpSwap
+   - Achieved same-slot execution via direct gRPC validator streams
+   - Implemented unlimited take-profit and stop-loss levels with trailing stop-loss
+   - Built real-time rug protection by monitoring pool liquidity
+   - Parallel RPC submission with smart retry (3x buy, 10x sell)
+   - Encrypted wallet storage in PostgreSQL
+   - ClickHouse for trade analytics and settlement price extraction
+   - REST endpoints with AND/ANY trigger logic and GTC/IOC/GTT options
+   Tech: Python, FastAPI, Solana, gRPC, Redis, ClickHouse, PostgreSQL
+
+2. WhatsApp AI Chatbot - GPT-4o + LangChain Powered
+   Role: Backend developer
+   - Built an AI-powered WhatsApp chatbot for customer support with 90-95% intent recognition accuracy
+   - Response time under 1.2 seconds
+   - RAG with Vector Database, cutting hallucinations by 60%
+   - 80% of queries resolved without human handoff
+   - 500+ concurrent sessions with 99.9% delivery reliability
+   - Secure webhook APIs with Redis-backed message queueing
+   Tech: FastAPI, LangChain, GPT-4o, Vector Database, Redis, PostgreSQL
+
+3. Training & Ops Management Platform
+   Role: Full-stack backend developer
+   - Django platform managing 200+ training programs, 50+ trainers, 1,000+ trainees
+   - RBAC with JWT across Admin, Trainer, and Trainee roles (15+ endpoints)
+   - 65% reduction in manual operational effort
+   - 55% faster dashboard load times with Redis caching
+   - 3x concurrent user growth supported after optimization
+   Tech: Django, Django REST Framework, PostgreSQL, Redis
+
+EDUCATION
+Bachelor of Technology in Computer Science

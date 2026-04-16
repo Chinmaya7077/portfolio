@@ -1,0 +1,29 @@
+PROJECT: WhatsApp AI Chatbot - GPT-4o + LangChain Powered
+
+OVERVIEW:
+An AI-powered WhatsApp chatbot that runs customer support and business workflows end to end with 90-95% intent recognition accuracy and under 1.2s response time. Resolves 80% of queries without human handoff.
+
+ROLE: Backend developer owning the chatbot API layer, NLP pipeline integration, Vector Database setup, and webhook/session management.
+
+TECH STACK: FastAPI, LangChain, GPT-4o, Vector Database (Qdrant), Redis, PostgreSQL
+
+KEY HIGHLIGHTS:
+- 90-95% intent recognition accuracy across multi-turn conversations
+- RAG with Vector Database, cutting hallucinations by 60%
+- 80% of queries resolved without human handoff
+- 500+ concurrent sessions with 99.9% delivery reliability
+- Secure webhook APIs with Redis-backed message queueing
+
+ARCHITECTURE:
+The chatbot uses RAG (Retrieval-Augmented Generation) architecture:
+1. Retrieve relevant documents from Qdrant Vector Database
+2. Generate an answer using GPT-4o with retrieved documents as context
+
+The system uses LangChain's RetrievalQA chain with GPT-4o as the LLM and Qdrant as the vector store. Document embeddings enable semantic search - matching user intent even when exact keywords don't overlap.
+
+Key design decisions:
+- Vector database (Qdrant) for semantic document retrieval
+- Redis-backed message queuing for reliable delivery
+- Session management for multi-turn conversations
+- Webhook APIs for WhatsApp Business API integration
+- FastAPI for high-performance async request handling

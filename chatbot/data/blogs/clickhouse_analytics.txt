@@ -1,0 +1,20 @@
+BLOG: Why I Use ClickHouse for Trade Analytics
+
+PostgreSQL is great for OLTP, but when you need to aggregate billions of rows in under 2 seconds, ClickHouse is the answer.
+
+THE PROBLEM:
+PostgreSQL handled our OLTP workload perfectly - orders, wallets, user state. But analytical queries over trade history took 45 seconds on 10M rows. Unacceptable for a real-time dashboard.
+
+ENTER CLICKHOUSE:
+ClickHouse is a columnar OLAP database. The same query runs in 0.8 seconds on the same data.
+
+Why it's faster:
+- Columnar storage: only reads the columns you need
+- Vectorized execution: processes data in CPU-cache-friendly batches
+- Compression: 10x smaller on disk than PostgreSQL for the same data
+
+ARCHITECTURE:
+I use PostgreSQL for writes (orders, wallets) and replicate trade events to ClickHouse via Kafka:
+FastAPI -> PostgreSQL (orders) -> Kafka -> ClickHouse (analytics)
+
+This gives ACID for writes and blazing-fast analytics for reads. Best of both worlds.

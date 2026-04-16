@@ -1,0 +1,28 @@
+BLOG: How I Built a Same-Slot Trading Engine on Solana
+
+A deep dive into building EZWallet, an autonomous trading system that executes in the same Solana slot as the trigger event.
+
+THE PROBLEM:
+Most trading bots on Solana poll for price changes at fixed intervals - every second, every block. By the time they detect a signal, the opportunity is gone. We needed something faster.
+
+THE SOLUTION - gRPC Validator Streams:
+Instead of polling, I connected directly to Solana validators via gRPC. Every on-chain trade is streamed in real-time. This means we evaluate user triggers on every single transaction, not every second.
+
+Example approach:
+- Subscribe to validator transaction streams via gRPC
+- Extract token and price from each transaction event
+- Evaluate all user triggers against the new price
+- Execute trades in the same slot if triggers fire
+
+SAME-SLOT EXECUTION:
+When a trigger fires, the buy/sell transaction lands in the same Solana slot (~400ms). Achieved with:
+- Parallel RPC submission to multiple endpoints
+- Smart retry with 3x buy attempts, 10x sell attempts
+- Pre-signed transactions ready to fire instantly
+
+RESULTS:
+- Sub-second trigger-to-execution time
+- 99.8% same-slot landing rate
+- Zero missed exits during rug events
+
+KEY INSIGHT: Don't poll, stream. Direct gRPC beats REST polling by orders of magnitude for latency-critical applications.

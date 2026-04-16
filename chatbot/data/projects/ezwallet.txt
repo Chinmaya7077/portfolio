@@ -1,0 +1,28 @@
+PROJECT: EZWallet - Autonomous Solana Trading System
+
+OVERVIEW:
+An autonomous trading system that manages Solana token positions end to end on PumpFun and PumpSwap, executing buys and sells in the same on-chain slot as the trigger. Features rug protection, trailing stop-loss, parallel RPC submission, and flexible order placement with GTC/IOC/GTT time-in-force options.
+
+ROLE: Sole backend developer responsible for designing the trading engine, writing all FastAPI services, setting up gRPC integrations, and managing Redis/ClickHouse/PostgreSQL data layers.
+
+TECH STACK: Python, FastAPI, Solana, gRPC, Redis, ClickHouse, PostgreSQL
+
+KEY HIGHLIGHTS:
+- Same-slot execution via direct gRPC validator streams
+- Unlimited take-profit and stop-loss levels with trailing stop-loss
+- Real-time rug protection by monitoring pool liquidity
+- Parallel RPC submission with smart retry (3x buy, 10x sell)
+- Encrypted wallet storage in PostgreSQL
+- ClickHouse for trade analytics and settlement price extraction
+- REST endpoints with AND/ANY trigger logic and GTC/IOC/GTT options
+
+ARCHITECTURE:
+The system connects directly to Solana validators via gRPC for real-time transaction streaming. Every on-chain trade is streamed and evaluated against user triggers instantly, achieving sub-second trigger-to-execution time with a 99.8% same-slot landing rate. The key insight is streaming over polling - direct gRPC beats REST polling by orders of magnitude for latency-critical applications.
+
+Data flows:
+- FastAPI handles user orders and trigger configuration
+- gRPC streams provide real-time Solana transaction data
+- Redis manages session state and trigger evaluation
+- PostgreSQL stores orders, wallets (encrypted), and user data
+- ClickHouse handles trade analytics and settlement price extraction
+- Kafka connects PostgreSQL writes to ClickHouse for analytics
