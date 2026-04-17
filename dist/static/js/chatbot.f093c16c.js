@@ -12,9 +12,17 @@
   widget.id = 'chatbot-widget';
   widget.innerHTML = `
     <button id="chatbot-toggle" aria-label="Open AI Chat">
-      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-        <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-      </svg>
+      <div class="robot">
+        <div class="robot-antenna"><div class="robot-antenna-dot"></div></div>
+        <div class="robot-head">
+          <div class="robot-eye robot-eye-l"></div>
+          <div class="robot-eye robot-eye-r"></div>
+          <div class="robot-mouth"></div>
+        </div>
+        <div class="robot-body">
+          <div class="robot-chest-light"></div>
+        </div>
+      </div>
     </button>
     <div id="chatbot-panel" class="chatbot-hidden">
       <div id="chatbot-header">
