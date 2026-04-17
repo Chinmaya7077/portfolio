@@ -77,10 +77,10 @@
   // ---- SUGGESTIONS ----
   async function loadSuggestions() {
     const defaults = [
-      "What projects has Chinmaya built?",
-      "What is his tech stack?",
-      "Tell me about EZWallet",
-      "Show GitHub repos",
+      "What projects have you built?",
+      "What is your tech stack?",
+      "Tell me about your experience",
+      "What is your education?",
     ];
     try {
       const res = await fetch(API_URL + '/chat/suggestions');

@@ -28,14 +28,10 @@ class ChatResponse(BaseModel):
 
 
 SUGGESTED_QUESTIONS = [
-    "What projects has Chinmaya built?",
-    "Tell me about the EZWallet trading system",
-    "What is Chinmaya's tech stack?",
-    "How does the WhatsApp chatbot work?",
-    "Show me Chinmaya's GitHub repos",
-    "Explain the architecture of EZWallet",
-    "What experience does Chinmaya have with RAG?",
-    "Show me a FastAPI code example",
+    "What projects have you built?",
+    "What is your tech stack?",
+    "Tell me about your experience",
+    "What is your education?",
 ]
 
 
