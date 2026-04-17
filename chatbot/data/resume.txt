@@ -4,51 +4,104 @@ Email: Chinmayaranjansahu262@gmail.com
 Phone: +91 6366368424
 LinkedIn: linkedin.com/in/chinmaya-984525243
 GitHub: github.com/Chinmaya7077
+Portfolio: chinmaya-portfolio-theta.vercel.app
 
 SUMMARY
-Backend developer specializing in Python, FastAPI, and Django. Experienced in building autonomous trading systems, AI-powered chatbots, and operations management platforms. Skilled in designing scalable architectures with PostgreSQL, Redis, ClickHouse, and message queues.
+I am a backend developer with 2+ years of professional experience specializing in Python, FastAPI, and Django. I have built autonomous trading systems, AI-powered chatbots, and operations management platforms from scratch. I focus on writing clean, scalable backend code and designing reliable system architectures.
 
-SKILLS
-- Languages: Python, SQL, JavaScript
-- Backend Frameworks: FastAPI, Django, Django REST Framework
-- AI/ML: LangChain, GPT-4o, RAG pipelines, Vector Databases, sentence-transformers
-- Databases: PostgreSQL, Redis, ClickHouse, ChromaDB, Qdrant
-- Blockchain: Solana, gRPC, PumpFun, PumpSwap
-- DevOps: Docker, GitHub Actions, GitLab CI, Nginx
-- Tools: Celery, Kafka, WebSockets, REST APIs
+YEARS OF EXPERIENCE
+I have over 2 years of hands-on professional experience in backend development. I started with Django and gradually moved to FastAPI for high-performance services. I have been working with AI/ML integrations (LangChain, RAG, GPT-4o) for the past year.
 
-EXPERIENCE
+SKILLS - BACKEND (Primary)
+- Languages: Python (primary), SQL, JavaScript (basic)
+- Backend Frameworks: FastAPI (primary), Django, Django REST Framework
+- API Design: REST APIs, WebSocket APIs, gRPC, Webhook integrations
+- Authentication: JWT, OAuth2, RBAC (Role-Based Access Control)
+- Task Queues: Celery, Kafka (message streaming)
+- Testing: pytest, unit testing, integration testing
 
-1. EZWallet - Autonomous Solana Trading System
+SKILLS - AI/ML
+- LLM Integration: LangChain, GPT-4o, RAG pipelines, prompt engineering
+- Vector Databases: Qdrant, ChromaDB
+- Embeddings: sentence-transformers (all-MiniLM-L6-v2)
+- NLP: intent recognition, semantic search, conversational AI
+
+SKILLS - DATABASES
+- Relational: PostgreSQL (primary), SQLite
+- In-Memory: Redis (caching, session management, message queues)
+- Columnar/Analytics: ClickHouse (OLAP, trade analytics)
+- Vector: Qdrant, ChromaDB
+
+SKILLS - BLOCKCHAIN
+- Solana blockchain development
+- gRPC validator stream integration
+- PumpFun and PumpSwap trading protocols
+- On-chain transaction analysis
+
+SKILLS - DEVOPS & TOOLS
+- Containerization: Docker, Docker Compose
+- CI/CD: GitHub Actions, GitLab CI
+- Web Servers: Nginx, Uvicorn, Gunicorn
+- Cloud: AWS basics, Vercel, HuggingFace Spaces
+- Version Control: Git, GitHub
+
+SKILLS - FRONTEND (Limited)
+I primarily work on the backend. I have basic knowledge of HTML, CSS, and JavaScript. I built my portfolio website using Django templates with vanilla JavaScript for interactivity, but I am not a frontend specialist. I am open to learning frontend frameworks like React if needed.
+
+WORK EXPERIENCE
+
+1. EZWallet - Autonomous Solana Trading System (2024-Present)
    Role: Sole backend developer
-   - Designed and built an autonomous trading system managing Solana token positions on PumpFun and PumpSwap
-   - Achieved same-slot execution via direct gRPC validator streams
-   - Implemented unlimited take-profit and stop-loss levels with trailing stop-loss
-   - Built real-time rug protection by monitoring pool liquidity
+   Duration: Ongoing project
+   - Designed and built the entire trading engine from scratch
+   - Manages Solana token positions on PumpFun and PumpSwap
+   - Same-slot execution via direct gRPC validator streams (~400ms)
+   - Unlimited take-profit and stop-loss levels with trailing stop-loss
+   - Real-time rug protection by monitoring pool liquidity
    - Parallel RPC submission with smart retry (3x buy, 10x sell)
    - Encrypted wallet storage in PostgreSQL
    - ClickHouse for trade analytics and settlement price extraction
    - REST endpoints with AND/ANY trigger logic and GTC/IOC/GTT options
    Tech: Python, FastAPI, Solana, gRPC, Redis, ClickHouse, PostgreSQL
 
-2. WhatsApp AI Chatbot - GPT-4o + LangChain Powered
+2. WhatsApp AI Chatbot (2024)
    Role: Backend developer
-   - Built an AI-powered WhatsApp chatbot for customer support with 90-95% intent recognition accuracy
-   - Response time under 1.2 seconds
-   - RAG with Vector Database, cutting hallucinations by 60%
-   - 80% of queries resolved without human handoff
-   - 500+ concurrent sessions with 99.9% delivery reliability
-   - Secure webhook APIs with Redis-backed message queueing
-   Tech: FastAPI, LangChain, GPT-4o, Vector Database, Redis, PostgreSQL
+   Duration: ~4 months
+   - Built the entire chatbot backend from API layer to NLP pipeline
+   - Integrated LangChain with GPT-4o for intelligent responses
+   - Set up Qdrant vector database for semantic document retrieval (RAG)
+   - Achieved 90-95% intent recognition accuracy
+   - Response time under 1.2 seconds including retrieval + generation
+   - 80% of customer queries resolved without human handoff
+   - Handles 500+ concurrent sessions with 99.9% delivery reliability
+   - Built secure webhook APIs with Redis-backed message queueing
+   Tech: FastAPI, LangChain, GPT-4o, Qdrant, Redis, PostgreSQL
 
-3. Training & Ops Management Platform
+3. Training & Ops Management Platform (2023-2024)
    Role: Full-stack backend developer
-   - Django platform managing 200+ training programs, 50+ trainers, 1,000+ trainees
-   - RBAC with JWT across Admin, Trainer, and Trainee roles (15+ endpoints)
+   Duration: ~6 months
+   - Built the platform from scratch using Django
+   - Manages 200+ training programs, 50+ trainers, 1,000+ trainees
+   - Designed 15+ REST API endpoints with Django REST Framework
+   - Implemented RBAC with JWT (Admin, Trainer, Trainee roles)
    - 65% reduction in manual operational effort
    - 55% faster dashboard load times with Redis caching
-   - 3x concurrent user growth supported after optimization
+   - Supported 3x concurrent user growth after optimization
    Tech: Django, Django REST Framework, PostgreSQL, Redis
 
 EDUCATION
-Bachelor of Technology in Computer Science
+- Bachelor of Technology (B.Tech) in Computer Science
+- Relevant coursework: Data Structures, Algorithms, Database Systems, Operating Systems, Computer Networks
+
+WHAT I'M LOOKING FOR
+I am currently open to new opportunities in backend development, Python engineering, or AI/ML integration roles. I am particularly interested in roles that involve building scalable systems, working with LLMs and RAG pipelines, or blockchain/fintech development. I am open to both remote and Bangalore-based positions.
+
+PERSONAL INTERESTS
+- Building side projects and exploring new technologies
+- Open source contribution
+- System design and architecture
+- Blockchain and DeFi
+- AI/ML and natural language processing
+
+AVAILABILITY
+I am currently available and open to discussing new opportunities. Feel free to reach out via email at Chinmayaranjansahu262@gmail.com or connect with me on LinkedIn.

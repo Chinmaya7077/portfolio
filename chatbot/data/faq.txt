@@ -1,0 +1,44 @@
+FREQUENTLY ASKED QUESTIONS ABOUT CHINMAYA
+
+Q: How many years of experience do you have?
+A: I have over 2 years of professional experience in backend development, primarily with Python, FastAPI, and Django. I've been working with AI/ML technologies like LangChain and RAG for about a year.
+
+Q: Do you work with frontend technologies?
+A: I primarily focus on backend development. I have basic knowledge of HTML, CSS, and JavaScript — I built my portfolio site using Django templates and vanilla JS. But I'm not a frontend specialist. I'm open to learning React or other frontend frameworks if a role requires it.
+
+Q: What is your primary programming language?
+A: Python is my primary language. I use it for everything — web APIs (FastAPI, Django), AI/ML integrations (LangChain), blockchain development (Solana), and data processing.
+
+Q: Are you open to new opportunities?
+A: Yes, I'm currently open to new opportunities in backend development, Python engineering, or AI/ML integration roles. I'm interested in building scalable systems, working with LLMs, or blockchain/fintech development. Open to remote and Bangalore-based positions.
+
+Q: What is your strongest project?
+A: EZWallet is my most technically challenging project. I built an autonomous Solana trading system that executes trades in the same on-chain slot as the trigger (~400ms). It uses gRPC for real-time validator streams, ClickHouse for analytics, and parallel RPC submission for reliability.
+
+Q: What databases do you work with?
+A: I work with PostgreSQL as my primary relational database, Redis for caching and message queues, ClickHouse for analytics and OLAP workloads, and vector databases like Qdrant and ChromaDB for AI/semantic search applications.
+
+Q: Do you have experience with AI and machine learning?
+A: Yes, I've built production RAG pipelines using LangChain, GPT-4o, and vector databases. My WhatsApp chatbot project uses retrieval-augmented generation to achieve 90-95% intent recognition accuracy. I also built this portfolio chatbot using RAG with ChromaDB and HuggingFace models.
+
+Q: What is your education?
+A: I have a Bachelor of Technology (B.Tech) in Computer Science.
+
+Q: Where are you located?
+A: I'm based in Bangalore, India. I'm open to both remote work and on-site positions in Bangalore.
+
+Q: How can I contact you?
+A: You can reach me at:
+- Email: Chinmayaranjansahu262@gmail.com
+- Phone: +91 6366368424
+- LinkedIn: linkedin.com/in/chinmaya-984525243
+- GitHub: github.com/Chinmaya7077
+
+Q: What makes you different from other developers?
+A: I specialize in building complete backend systems from scratch — not just writing APIs, but designing the entire architecture. I've worked across diverse domains: blockchain trading (EZWallet), AI chatbots (WhatsApp bot), and enterprise platforms (Training ops). I focus on performance, reliability, and clean architecture.
+
+Q: Do you contribute to open source?
+A: My portfolio project is publicly available on GitHub at github.com/Chinmaya7077/portfolio. I'm actively looking to contribute more to open source projects.
+
+Q: What type of work do you enjoy most?
+A: I love building systems that process real-time data — like the trading engine that streams Solana transactions via gRPC, or the chatbot that retrieves and generates responses in under 2 seconds. I enjoy the challenge of making things fast and reliable.
