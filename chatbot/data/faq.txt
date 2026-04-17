@@ -1,31 +1,34 @@
 FREQUENTLY ASKED QUESTIONS ABOUT CHINMAYA
 
 Q: How many years of experience do you have?
-A: I have over 2 years of professional experience in backend development, primarily with Python, FastAPI, and Django. I've been working with AI/ML technologies like LangChain and RAG for about a year.
+A: I have 3+ years of professional experience as a Python Backend Developer. I have been working at HCL Technologies in Bangalore since April 2023, building production Python services for enterprise platforms.
+
+Q: Where do you currently work?
+A: I currently work at HCL Technologies in Bangalore, India as a Python Backend Developer. I have been there since April 2023. I build production services across multiple projects including a Solana trading bot, an AI chatbot, and an operations management platform.
+
+Q: What is your educational background?
+A: I have a Master of Computer Applications (MCA) from Trident Academy of Creative Technology, completed in 2024. Before that, I completed my Bachelor of Science in Physics (BSc Physics) from Khaira College in 2022.
 
 Q: Do you work with frontend technologies?
-A: I primarily focus on backend development. I have basic knowledge of HTML, CSS, and JavaScript — I built my portfolio site using Django templates and vanilla JS. But I'm not a frontend specialist. I'm open to learning React or other frontend frameworks if a role requires it.
+A: I primarily focus on backend development. I have basic knowledge of HTML, CSS, and JavaScript — I built my portfolio site using Django templates and vanilla JS. I'm not a frontend specialist but I'm open to learning React or other frontend frameworks if a role requires it.
 
 Q: What is your primary programming language?
-A: Python is my primary language. I use it for everything — web APIs (FastAPI, Django), AI/ML integrations (LangChain), blockchain development (Solana), and data processing.
+A: Python is my primary language. I use it for everything — web APIs (FastAPI, Django), AI/ML integrations (LangChain), blockchain development (Solana), and data processing. I also work with SQL extensively.
 
 Q: Are you open to new opportunities?
-A: Yes, I'm currently open to new opportunities in backend development, Python engineering, or AI/ML integration roles. I'm interested in building scalable systems, working with LLMs, or blockchain/fintech development. Open to remote and Bangalore-based positions.
+A: I am currently working at HCL Technologies but I am open to exploring new opportunities in backend development, Python engineering, or AI/ML integration roles. I'm interested in building scalable systems, working with LLMs, or blockchain/fintech development. Open to remote and Bangalore-based positions.
 
 Q: What is your strongest project?
-A: EZWallet is my most technically challenging project. I built an autonomous Solana trading system that executes trades in the same on-chain slot as the trigger (~400ms). It uses gRPC for real-time validator streams, ClickHouse for analytics, and parallel RPC submission for reliability.
+A: EZWallet is my most technically challenging project. I built an autonomous Solana trading system as the sole backend developer. It executes trades in the same on-chain slot as the trigger (~400ms) using gRPC validator streams, ClickHouse for analytics, and parallel RPC submission for reliability.
 
 Q: What databases do you work with?
-A: I work with PostgreSQL as my primary relational database, Redis for caching and message queues, ClickHouse for analytics and OLAP workloads, and vector databases like Qdrant and ChromaDB for AI/semantic search applications.
+A: I work with PostgreSQL and MySQL as relational databases, Redis for caching and message queues, ClickHouse for analytics and OLAP workloads, and vector databases like Qdrant and ChromaDB for AI/semantic search applications.
 
 Q: Do you have experience with AI and machine learning?
-A: Yes, I've built production RAG pipelines using LangChain, GPT-4o, and vector databases. My WhatsApp chatbot project uses retrieval-augmented generation to achieve 90-95% intent recognition accuracy. I also built this portfolio chatbot using RAG with ChromaDB and HuggingFace models.
-
-Q: What is your education?
-A: I have a Bachelor of Technology (B.Tech) in Computer Science.
+A: Yes, I integrate LangChain, GPT-4o, and Vector Databases to power AI and NLP automation. I built a production WhatsApp chatbot using RAG that achieves 90-95% intent recognition accuracy. I also built this portfolio chatbot using RAG with ChromaDB and HuggingFace models.
 
 Q: Where are you located?
-A: I'm based in Bangalore, India. I'm open to both remote work and on-site positions in Bangalore.
+A: I am based in Bangalore, India. I work at HCL Technologies here. I'm open to both remote work and on-site positions.
 
 Q: How can I contact you?
 A: You can reach me at:
@@ -35,10 +38,16 @@ A: You can reach me at:
 - GitHub: github.com/Chinmaya7077
 
 Q: What makes you different from other developers?
-A: I specialize in building complete backend systems from scratch — not just writing APIs, but designing the entire architecture. I've worked across diverse domains: blockchain trading (EZWallet), AI chatbots (WhatsApp bot), and enterprise platforms (Training ops). I focus on performance, reliability, and clean architecture.
+A: I build complete backend systems from scratch — not just APIs, but the entire architecture. I've worked across diverse domains: blockchain trading (EZWallet), AI chatbots (WhatsApp bot), and enterprise platforms (Training ops) — all at HCL Technologies. I maintain 85%+ test coverage, set up CI/CD pipelines, and follow Agile practices. I deliver 2-3 features per sprint consistently.
 
-Q: Do you contribute to open source?
-A: My portfolio project is publicly available on GitHub at github.com/Chinmaya7077/portfolio. I'm actively looking to contribute more to open source projects.
+Q: What is your work style?
+A: I follow Agile methodology. I participate in daily standups, sprint planning, and retrospectives. I pick up tickets from Jira and deliver 2-3 features per sprint. I write unit and integration tests for every feature branch and do code reviews. I work closely with product managers and DevOps teams.
 
-Q: What type of work do you enjoy most?
-A: I love building systems that process real-time data — like the trading engine that streams Solana transactions via gRPC, or the chatbot that retrieves and generates responses in under 2 seconds. I enjoy the challenge of making things fast and reliable.
+Q: What CI/CD tools do you use?
+A: I set up GitHub Actions and GitLab CI pipelines that run lint, tests, build, and deploy on every pull request. This cut our release turnaround from weekly to same-day deployments.
+
+Q: How do you handle production issues?
+A: I debug production incidents by tracing logs, profiling slow queries, and analyzing Redis and Kafka message backlogs. I restore service health within SLA. I also do performance tuning — for example, I improved dashboard load times by 55% through PostgreSQL query tuning and Redis caching.
+
+Q: How many projects have you worked on?
+A: I have built and maintained 3 active production projects at HCL Technologies: EZWallet (autonomous Solana trading system), WhatsApp AI Chatbot (customer support), and Training & Operations Management System (enterprise platform). I also built this portfolio website and its AI chatbot.

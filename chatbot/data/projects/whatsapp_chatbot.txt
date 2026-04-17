@@ -1,29 +1,14 @@
-PROJECT: WhatsApp AI Chatbot - GPT-4o + LangChain Powered
+PROJECT: WhatsApp AI Chatbot
 
-OVERVIEW:
-An AI-powered WhatsApp chatbot that runs customer support and business workflows end to end with 90-95% intent recognition accuracy and under 1.2s response time. Resolves 80% of queries without human handoff.
+Tech Stack: FastAPI, LangChain, GPT-4o, Vector Database, Redis, PostgreSQL
 
-ROLE: Backend developer owning the chatbot API layer, NLP pipeline integration, Vector Database setup, and webhook/session management.
+Role: Backend developer owning the chatbot API layer, NLP pipeline integration, Vector Database setup, and webhook/session management.
 
-TECH STACK: FastAPI, LangChain, GPT-4o, Vector Database (Qdrant), Redis, PostgreSQL
+Company: Built at HCL Technologies
 
-KEY HIGHLIGHTS:
-- 90-95% intent recognition accuracy across multi-turn conversations
-- RAG with Vector Database, cutting hallucinations by 60%
-- 80% of queries resolved without human handoff
-- 500+ concurrent sessions with 99.9% delivery reliability
-- Secure webhook APIs with Redis-backed message queueing
-
-ARCHITECTURE:
-The chatbot uses RAG (Retrieval-Augmented Generation) architecture:
-1. Retrieve relevant documents from Qdrant Vector Database
-2. Generate an answer using GPT-4o with retrieved documents as context
-
-The system uses LangChain's RetrievalQA chain with GPT-4o as the LLM and Qdrant as the vector store. Document embeddings enable semantic search - matching user intent even when exact keywords don't overlap.
-
-Key design decisions:
-- Vector database (Qdrant) for semantic document retrieval
-- Redis-backed message queuing for reliable delivery
-- Session management for multi-turn conversations
-- Webhook APIs for WhatsApp Business API integration
-- FastAPI for high-performance async request handling
+What I built:
+- Launched an AI-powered WhatsApp chatbot that runs customer support and business workflows end to end.
+- Crafted NLP pipelines and prompt-orchestration chains achieving 90 to 95 percent intent recognition accuracy across multi-turn conversations.
+- Integrated a Vector Database for embeddings-based retrieval and Retrieval-Augmented Generation (RAG), cutting hallucinations and lifting answer relevance by 60%.
+- Reduced average response time to under 1.2 seconds and resolved 80% of repetitive support queries without human handoff.
+- Shipped secure webhook APIs, session management, and Redis-backed message queueing supporting 500+ concurrent sessions with 99.9% delivery reliability.

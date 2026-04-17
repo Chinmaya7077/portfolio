@@ -1,107 +1,56 @@
 CHINMAYA RANJAN SAHU
-Python Backend Developer | Bangalore, India
+PYTHON BACKEND DEVELOPER
+Bangalore, India
 Email: Chinmayaranjansahu262@gmail.com
 Phone: +91 6366368424
 LinkedIn: linkedin.com/in/chinmaya-984525243
 GitHub: github.com/Chinmaya7077
 Portfolio: chinmaya-portfolio-theta.vercel.app
 
-SUMMARY
-I am a backend developer with 2+ years of professional experience specializing in Python, FastAPI, and Django. I have built autonomous trading systems, AI-powered chatbots, and operations management platforms from scratch. I focus on writing clean, scalable backend code and designing reliable system architectures.
+PROFESSIONAL SUMMARY
+Python Backend Developer with 3+ years of experience building scalable server-side systems. I specialize in Django, FastAPI, Django REST Framework, and PostgreSQL. I build high-performance REST APIs, microservices, and event-driven pipelines powered by Redis, Kafka, and ClickHouse. I integrate LangChain, GPT-4o, and Vector Databases to power AI and NLP automation. I ship production features through CI/CD, performance tuning, and Agile sprints across enterprise environments.
 
 YEARS OF EXPERIENCE
-I have over 2 years of hands-on professional experience in backend development. I started with Django and gradually moved to FastAPI for high-performance services. I have been working with AI/ML integrations (LangChain, RAG, GPT-4o) for the past year.
+I have 3+ years of professional experience as a Python Backend Developer. I have been working at HCL Technologies in Bangalore since April 2023. I build production Python services for enterprise platforms.
 
-SKILLS - BACKEND (Primary)
-- Languages: Python (primary), SQL, JavaScript (basic)
-- Backend Frameworks: FastAPI (primary), Django, Django REST Framework
-- API Design: REST APIs, WebSocket APIs, gRPC, Webhook integrations
-- Authentication: JWT, OAuth2, RBAC (Role-Based Access Control)
-- Task Queues: Celery, Kafka (message streaming)
-- Testing: pytest, unit testing, integration testing
+TECHNICAL SKILLS
+Languages: Python, SQL
+Backend Frameworks: Django, FastAPI, Django REST Framework
+AI and NLP: LangChain, GPT-4o, Vector Databases, Machine Learning, Natural Language Processing, Retrieval-Augmented Generation (RAG)
+Databases: PostgreSQL, MySQL, Redis, ClickHouse
+Messaging and Streaming: Apache Kafka, Redpanda
+DevOps and Tools: Git, GitHub, GitLab, Docker, Postman, Linux
+Architecture and Concepts: REST API, Microservices, Event-Driven Architecture, System Design, JWT Authentication, Role-Based Access Control (RBAC), WebSockets
+Testing: Unit Testing, Integration Testing, 85%+ code coverage
+Methodologies: Agile, Code Reviews, Sprint Planning, Jira
 
-SKILLS - AI/ML
-- LLM Integration: LangChain, GPT-4o, RAG pipelines, prompt engineering
-- Vector Databases: Qdrant, ChromaDB
-- Embeddings: sentence-transformers (all-MiniLM-L6-v2)
-- NLP: intent recognition, semantic search, conversational AI
+PROFESSIONAL EXPERIENCE
+Company: HCL Technologies
+Role: Python Backend Developer
+Location: Bangalore, India
+Duration: April 2023 to Present
+Description: Assigned to HCL Technologies as the primary client, building production Python services for enterprise platforms.
 
-SKILLS - DATABASES
-- Relational: PostgreSQL (primary), SQLite
-- In-Memory: Redis (caching, session management, message queues)
-- Columnar/Analytics: ClickHouse (OLAP, trade analytics)
-- Vector: Qdrant, ChromaDB
-
-SKILLS - BLOCKCHAIN
-- Solana blockchain development
-- gRPC validator stream integration
-- PumpFun and PumpSwap trading protocols
-- On-chain transaction analysis
-
-SKILLS - DEVOPS & TOOLS
-- Containerization: Docker, Docker Compose
-- CI/CD: GitHub Actions, GitLab CI
-- Web Servers: Nginx, Uvicorn, Gunicorn
-- Cloud: AWS basics, Vercel, HuggingFace Spaces
-- Version Control: Git, GitHub
-
-SKILLS - FRONTEND (Limited)
-I primarily work on the backend. I have basic knowledge of HTML, CSS, and JavaScript. I built my portfolio website using Django templates with vanilla JavaScript for interactivity, but I am not a frontend specialist. I am open to learning frontend frameworks like React if needed.
-
-WORK EXPERIENCE
-
-1. EZWallet - Autonomous Solana Trading System (2024-Present)
-   Role: Sole backend developer
-   Duration: Ongoing project
-   - Designed and built the entire trading engine from scratch
-   - Manages Solana token positions on PumpFun and PumpSwap
-   - Same-slot execution via direct gRPC validator streams (~400ms)
-   - Unlimited take-profit and stop-loss levels with trailing stop-loss
-   - Real-time rug protection by monitoring pool liquidity
-   - Parallel RPC submission with smart retry (3x buy, 10x sell)
-   - Encrypted wallet storage in PostgreSQL
-   - ClickHouse for trade analytics and settlement price extraction
-   - REST endpoints with AND/ANY trigger logic and GTC/IOC/GTT options
-   Tech: Python, FastAPI, Solana, gRPC, Redis, ClickHouse, PostgreSQL
-
-2. WhatsApp AI Chatbot (2024)
-   Role: Backend developer
-   Duration: ~4 months
-   - Built the entire chatbot backend from API layer to NLP pipeline
-   - Integrated LangChain with GPT-4o for intelligent responses
-   - Set up Qdrant vector database for semantic document retrieval (RAG)
-   - Achieved 90-95% intent recognition accuracy
-   - Response time under 1.2 seconds including retrieval + generation
-   - 80% of customer queries resolved without human handoff
-   - Handles 500+ concurrent sessions with 99.9% delivery reliability
-   - Built secure webhook APIs with Redis-backed message queueing
-   Tech: FastAPI, LangChain, GPT-4o, Qdrant, Redis, PostgreSQL
-
-3. Training & Ops Management Platform (2023-2024)
-   Role: Full-stack backend developer
-   Duration: ~6 months
-   - Built the platform from scratch using Django
-   - Manages 200+ training programs, 50+ trainers, 1,000+ trainees
-   - Designed 15+ REST API endpoints with Django REST Framework
-   - Implemented RBAC with JWT (Admin, Trainer, Trainee roles)
-   - 65% reduction in manual operational effort
-   - 55% faster dashboard load times with Redis caching
-   - Supported 3x concurrent user growth after optimization
-   Tech: Django, Django REST Framework, PostgreSQL, Redis
+Key responsibilities at HCL Technologies:
+- Built and maintained production Python services across 3 active projects: an autonomous Solana trading bot, an AI-powered WhatsApp chatbot, and an operations management platform.
+- Wrote and reviewed REST API contracts, PostgreSQL schemas, and Kafka event flows, keeping 30+ endpoints consistent across services.
+- Wrote unit and integration tests for every feature branch, maintaining 85%+ coverage and catching regressions before they reached staging.
+- Set up GitHub Actions and GitLab CI pipelines that run lint, tests, build, and deploy on every pull request, cutting release turnaround from weekly to same-day.
+- Debugged production incidents by tracing logs, profiling slow queries, and analyzing Redis and Kafka message backlogs to restore service health within SLA.
+- Participated in daily standups, sprint planning, and retrospectives, picking up tickets from Jira and delivering 2-3 features per sprint.
+- Worked closely with product managers to translate business requirements into technical specs, and with DevOps to define Docker deployments and environment configs.
 
 EDUCATION
-- Bachelor of Technology (B.Tech) in Computer Science
-- Relevant coursework: Data Structures, Algorithms, Database Systems, Operating Systems, Computer Networks
+1. Master of Computer Applications (MCA)
+   Institution: Trident Academy of Creative Technology
+   Year: 2024
 
-WHAT I'M LOOKING FOR
-I am currently open to new opportunities in backend development, Python engineering, or AI/ML integration roles. I am particularly interested in roles that involve building scalable systems, working with LLMs and RAG pipelines, or blockchain/fintech development. I am open to both remote and Bangalore-based positions.
+2. Bachelor of Science in Physics (BSc Physics)
+   Institution: Khaira College
+   Year: 2022
 
-PERSONAL INTERESTS
-- Building side projects and exploring new technologies
-- Open source contribution
-- System design and architecture
-- Blockchain and DeFi
-- AI/ML and natural language processing
+FRONTEND SKILLS
+I primarily focus on backend development. I have basic knowledge of HTML, CSS, and JavaScript. I built my portfolio website using Django templates with vanilla JavaScript for interactivity. I am not a frontend specialist but I am open to learning frontend frameworks like React if a role requires it.
 
-AVAILABILITY
-I am currently available and open to discussing new opportunities. Feel free to reach out via email at Chinmayaranjansahu262@gmail.com or connect with me on LinkedIn.
+AVAILABILITY AND JOB PREFERENCES
+I am currently working at HCL Technologies in Bangalore. I am open to new opportunities in backend development, Python engineering, or AI/ML integration roles. I am particularly interested in roles that involve building scalable systems, working with LLMs and RAG pipelines, or blockchain/fintech development. I am open to both remote and Bangalore-based positions.

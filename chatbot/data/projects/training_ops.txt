@@ -1,26 +1,14 @@
-PROJECT: Training & Ops Management Platform
+PROJECT: Training and Operations Management System
 
-OVERVIEW:
-A Django platform managing 200+ training programs, 50+ trainers, and 1,000+ trainees with role-based access control, real-time dashboards, and automated scheduling. Reduced manual operational effort by 65%.
+Tech Stack: Django, Django REST Framework, PostgreSQL, Redis
 
-ROLE: Full-stack backend developer handling Django models, REST APIs, role-based access control, dashboard queries, and Redis caching layer.
+Role: Full-stack backend developer handling Django models, REST APIs, role-based access control, dashboard queries, and Redis caching layer.
 
-TECH STACK: Django, Django REST Framework, PostgreSQL, Redis
+Company: Built at HCL Technologies
 
-KEY HIGHLIGHTS:
-- 200+ programs, 50+ trainers, 1,000+ trainees managed end to end
-- RBAC with JWT across Admin, Trainer, and Trainee roles (15+ endpoints)
-- 65% reduction in manual operational effort
-- 55% faster dashboard load times with Redis caching
-- 3x concurrent user growth supported after optimization
-
-ARCHITECTURE:
-The platform follows a standard Django REST architecture:
-- Django ORM for data modeling and database operations
-- Django REST Framework for API endpoints
-- JWT-based authentication with role-based access control
-- Redis for caching frequently accessed dashboard data
-- PostgreSQL for persistent data storage
-- Celery for async task processing (scheduling, notifications)
-
-The RBAC system supports three roles: Admin (full access), Trainer (program management), and Trainee (enrollment and progress tracking). Each role has specific endpoint access controlled via JWT claims.
+What I built:
+- Produced a scalable Django and Django REST Framework application managing 200+ training programs, 50+ trainers, and 1,000+ trainees end to end.
+- Enforced role-based access control with JWT authentication across Admin, Trainer, and Trainee roles, securing 15+ sensitive API endpoints.
+- Wrote interactive dashboards and analytics APIs backed by PostgreSQL for real-time tracking of attendance, performance, and training KPIs.
+- Orchestrated recurring scheduling, notifications, and reporting workflows, reducing manual operational effort by 65%.
+- Tuned PostgreSQL queries and added Redis caching, improving dashboard load times by 55% and supporting 3x concurrent user growth.

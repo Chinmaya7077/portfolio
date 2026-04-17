@@ -1,28 +1,16 @@
 PROJECT: EZWallet - Autonomous Solana Trading System
 
-OVERVIEW:
-An autonomous trading system that manages Solana token positions end to end on PumpFun and PumpSwap, executing buys and sells in the same on-chain slot as the trigger. Features rug protection, trailing stop-loss, parallel RPC submission, and flexible order placement with GTC/IOC/GTT time-in-force options.
+Tech Stack: Python, FastAPI, Solana, gRPC, Redis, ClickHouse, PostgreSQL
 
-ROLE: Sole backend developer responsible for designing the trading engine, writing all FastAPI services, setting up gRPC integrations, and managing Redis/ClickHouse/PostgreSQL data layers.
+Role: Sole backend developer responsible for designing the trading engine, writing all FastAPI services, setting up gRPC integrations, and managing Redis/ClickHouse/PostgreSQL data layers.
 
-TECH STACK: Python, FastAPI, Solana, gRPC, Redis, ClickHouse, PostgreSQL
+Company: Built at HCL Technologies
 
-KEY HIGHLIGHTS:
-- Same-slot execution via direct gRPC validator streams
-- Unlimited take-profit and stop-loss levels with trailing stop-loss
-- Real-time rug protection by monitoring pool liquidity
-- Parallel RPC submission with smart retry (3x buy, 10x sell)
-- Encrypted wallet storage in PostgreSQL
-- ClickHouse for trade analytics and settlement price extraction
-- REST endpoints with AND/ANY trigger logic and GTC/IOC/GTT options
-
-ARCHITECTURE:
-The system connects directly to Solana validators via gRPC for real-time transaction streaming. Every on-chain trade is streamed and evaluated against user triggers instantly, achieving sub-second trigger-to-execution time with a 99.8% same-slot landing rate. The key insight is streaming over polling - direct gRPC beats REST polling by orders of magnitude for latency-critical applications.
-
-Data flows:
-- FastAPI handles user orders and trigger configuration
-- gRPC streams provide real-time Solana transaction data
-- Redis manages session state and trigger evaluation
-- PostgreSQL stores orders, wallets (encrypted), and user data
-- ClickHouse handles trade analytics and settlement price extraction
-- Kafka connects PostgreSQL writes to ClickHouse for analytics
+What I built:
+- An autonomous trading system that manages Solana token positions end to end on PumpFun and PumpSwap, executing buys and sells in the same on-chain slot as the trigger.
+- Integrated direct gRPC validator streams to evaluate user-defined triggers on every on-chain tick, replacing fixed-interval API polling with real-time event evaluation.
+- Implemented unlimited take-profit and stop-loss levels per order, trailing stop-loss tracking peak price, and a timeout watchdog that auto-closes stale positions without user action.
+- Added real-time rug protection by monitoring pool liquidity continuously and auto-exiting positions the moment liquidity dropped below per-order thresholds.
+- Engineered a parallel RPC submission layer with smart retry (3x buy, 10x sell, exponential backoff), achieving same-slot landing on critical sell transactions.
+- Stored encrypted user wallets and order state in PostgreSQL, used Redis for position state and publish-subscribe, and ClickHouse for trade analytics and settlement price extraction.
+- Exposed REST endpoints supporting price triggers (above, below, approximately equal), AND or ANY logic, and GTC, IOC, and GTT time-in-force options for flexible order placement.
