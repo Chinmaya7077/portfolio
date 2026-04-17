@@ -28,7 +28,6 @@
         <button id="chatbot-close" aria-label="Close chat">&times;</button>
       </div>
       <div id="chatbot-messages"></div>
-      <div id="chatbot-suggestions"></div>
       <div id="chatbot-input-area">
         <input type="text" id="chatbot-input" placeholder="Ask about projects, skills, experience..." autocomplete="off" />
         <button id="chatbot-send" aria-label="Send">
@@ -45,7 +44,6 @@
   const panel = document.getElementById('chatbot-panel');
   const closeBtn = document.getElementById('chatbot-close');
   const messagesEl = document.getElementById('chatbot-messages');
-  const suggestionsEl = document.getElementById('chatbot-suggestions');
   const input = document.getElementById('chatbot-input');
   const sendBtn = document.getElementById('chatbot-send');
 
@@ -59,7 +57,6 @@
     toggle.classList.add('chatbot-active');
     if (messagesEl.children.length === 0) {
       showWelcome();
-      loadSuggestions();
     }
     input.focus();
   });
@@ -71,40 +68,7 @@
   });
 
   function showWelcome() {
-    addMessage('assistant', "Hi! I'm Chinmaya's AI assistant. Ask me about his projects, skills, experience, or tech stack.");
-  }
-
-  // ---- SUGGESTIONS ----
-  async function loadSuggestions() {
-    const defaults = [
-      "What projects have you built?",
-      "What is your tech stack?",
-      "Tell me about your experience",
-      "What is your education?",
-    ];
-    try {
-      const res = await fetch(API_URL + '/chat/suggestions');
-      if (res.ok) {
-        const data = await res.json();
-        renderSuggestions(data.suggestions.slice(0, 4));
-        return;
-      }
-    } catch (e) {}
-    renderSuggestions(defaults);
-  }
-
-  function renderSuggestions(items) {
-    suggestionsEl.innerHTML = '';
-    items.forEach(text => {
-      const btn = document.createElement('button');
-      btn.className = 'chatbot-suggestion';
-      btn.textContent = text;
-      btn.addEventListener('click', () => {
-        sendMessage(text);
-        suggestionsEl.innerHTML = '';
-      });
-      suggestionsEl.appendChild(btn);
-    });
+    addMessage('assistant', "Hi! I'm Chinmaya's AI assistant. Ask me anything about my projects, skills, or experience.");
   }
 
   // ---- MESSAGES ----
